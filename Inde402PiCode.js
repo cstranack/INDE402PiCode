@@ -28,7 +28,7 @@ board.on("ready", function() {
 			})
     
     } else{
-      axios.post('HEROKU gitURL here', {
+      axios.post('HEROKU URL here ', {
 		  state: 'on',
 		  time: new Date().toLocaleTimeString(),
 		  date: new Date().toLocateDateString()
@@ -39,6 +39,9 @@ board.on("ready", function() {
       }
   });
 });
+
+
+//testing github
 
 
 
