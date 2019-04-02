@@ -18,7 +18,7 @@ board.on("ready", function() {
     var state = "open";
     var sensorValue = this.value;
     if(value > 200){
-		axios.post('https://obscure-oasis-65355.herokuapp.com/', {
+		axios.post('https://obscure-oasis-65355.herokuapp.com/addData', {
 			state: 'off',
             time: new Date().toLocaleTimeString(),
             date: new Date().toLocaleDateString()
@@ -28,7 +28,7 @@ board.on("ready", function() {
 			})
     
     } else{
-      axios.post('https://obscure-oasis-65355.herokuapp.com/', {
+      axios.post('https://obscure-oasis-65355.herokuapp.com/addData', {
 		  state: 'on',
 		  time: new Date().toLocaleTimeString(),
 		  date: new Date().toLocaleDateString()
