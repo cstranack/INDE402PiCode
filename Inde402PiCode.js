@@ -18,7 +18,7 @@ board.on("ready", function() {
     var state = "open";
     var sensorValue = this.value;
     if(value > 200){
-		axios.post('https://infinate-depth-88554.herokuapp.com/', {
+		axios.post('https://quiet-plains-50389.herokuapp.com/', {
 			state: 'off',
             time: new Date().toLocaleTimeString(),
             date: new Date().toLocaleDateString()
@@ -28,10 +28,10 @@ board.on("ready", function() {
 			})
     
     } else{
-      axios.post('https://infinate-depth-88554.herokuapp.com/', {
+      axios.post('https://quiet-plains-50389.herokuapp.com/', {
 		  state: 'on',
 		  time: new Date().toLocaleTimeString(),
-		  date: new Date().toLocateDateString()
+		  date: new Date().toLocaleDateString()
 	  })
 		.then((res) => {
 			console.log('Bottle on the table at' + new Date().toLocaleTimeString())
