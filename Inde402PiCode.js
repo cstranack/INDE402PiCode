@@ -18,7 +18,7 @@ board.on("ready", function() {
     var state = "open";
     var sensorValue = this.value;
     if(value > 200){
-		axios.post('HEROKU URL here', {
+		axios.post('https://infinate-depth-88554.herokuapp.com/', {
 			state: 'off',
             time: new Date().toLocaleTimeString(),
             date: new Date().toLocaleDateString()
@@ -28,7 +28,7 @@ board.on("ready", function() {
 			})
     
     } else{
-      axios.post('HEROKU URL here ', {
+      axios.post('https://infinate-depth-88554.herokuapp.com/', {
 		  state: 'on',
 		  time: new Date().toLocaleTimeString(),
 		  date: new Date().toLocateDateString()
