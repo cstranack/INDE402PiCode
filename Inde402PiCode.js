@@ -20,7 +20,7 @@ board.on("ready", function() {
     var sensorValue = this.value;
     
     //console.log(sensorValue);
-    if(sensorValue < 500  && currentStatus === 'onTable'){
+    if(sensorValue == 1023  && currentStatus === 'onTable'){
       currentStatus = 'drinking'
 		axios.post('https://obscure-oasis-65355.herokuapp.com/addData', {
 			state: 'Drinking',
@@ -34,7 +34,7 @@ board.on("ready", function() {
 				//state = 'off';
 			})
     
-    } else if(sensorValue > 501 && currentStatus === 'drinking' ){
+    } else if(sensorValue == 1 && currentStatus === 'drinking' ){
       currentStatus = 'onTable'
       axios.post('https://obscure-oasis-65355.herokuapp.com/addData', {
 		  state: 'on Table',
