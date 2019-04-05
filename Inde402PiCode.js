@@ -6,8 +6,6 @@ const axios = require("axios");
 let titleSensor;
 var date = new Date();
 
-//var state = 'empty';
-
 
 board.on("ready", function() {
   
@@ -19,8 +17,9 @@ board.on("ready", function() {
   tiltSensor.on("change", function(value) {
     var sensorValue = this.value;
     
-    //console.log(sensorValue);
+    //conditions for drinking
     if(sensorValue == 1023  && currentStatus === 'onTable'){
+      //change state
       currentStatus = 'drinking'
 		axios.post('https://obscure-oasis-65355.herokuapp.com/addData', {
 			state: 'Drinking',
@@ -29,21 +28,24 @@ board.on("ready", function() {
 		})
 			.then((res) => {
 				
-				//console.log(value);
+				
 				console.log('Drinking at ' + new Date().toLocaleTimeString())
-				//state = 'off';
+				
 			})
-    
+    //conditions for on table
     } else if(sensorValue == 1 && currentStatus === 'drinking' ){
+      //change state
       currentStatus = 'onTable'
+      //post to Heroku
       axios.post('https://obscure-oasis-65355.herokuapp.com/addData', {
 		  state: 'on Table',
+		  //getting date and time
 		  time: new Date().toLocaleTimeString(),
 		  date: new Date().toLocaleDateString()
 	  })
 		.then((res) => {
 			
-			//console.log(value);
+			
 			console.log('Bottle on the table at' + new Date().toLocaleTimeString())
 		  })
     }
